@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière Estética Avançada | Realce sua Beleza Natural</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- VARIÁVEIS & RESET (DESIGN SYSTEM) --- */
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-dark: #aa8c2c;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+            --bg-body: #FDFCF8; /* Porcelain */
+            --bg-light: #F4F1EA; /* Soft Beige */
+            --white: #FFFFFF;
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --container-width: 1200px;
+            --border-radius: 4px; /* Cantos levemente arredondados, mais elegante que redondo */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TIPOGRAFIA --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .text-center { text-align: center; }
+        .text-gold { color: var(--primary-gold); }
+
+        /* --- COMPONENTES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-gold);
+            color: var(--white);
+            border: 1px solid var(--primary-gold);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+        }
+
+        .logo span { color: var(--primary-gold); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary-gold); }
+
+        .cta-header {
+            display: none; /* Mobile first hidden */
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- AUTHORITY STRIP --- */
+        .authority-strip {
+            background-color: var(--white);
+            padding: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        .authority-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .authority-item i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .authority-item p {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        /* --- PROCEDURES --- */
+        .procedures {
+            background-color: var(--bg-body);
+        }
+
+        .procedures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            group;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .card-img {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        /* --- BEFORE & AFTER --- */
+        .before-after {
+            background-color: var(--bg-light);
+        }
+
+        .comparison-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .comparison-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: var(--white);
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-images {
+            display: flex;
+            gap: 5px;
+        }
+
+        .comparison-img {
+            width: 50%;
+            position: relative;
+        }
+
+        .comparison-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(255,255,255,0.8);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .result-desc {
+            padding-top: 15px;
+            font-style: italic;
+            color: var(--text-gray);
+        }
+
+        /* --- ABOUT --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary-gold);
+            z-index: -1;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-body);
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .stars {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .client-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- MAP & CONTACT --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-item i {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            color: var(--white);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover { color: var(--primary-gold); }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b857;
+        }
+
+        /* --- RESPONSIVIDADE (MOBILE) --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .authority-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .cta-header { display: none; }
+            
+            /* Menu Mobile Simplificado */
+            .nav-links { display: none; } /* Em produção, usaríamos JS para toggle */
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .authority-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 15px; }
+            .btn { width: 100%; text-align: center; } /* Botões full width no mobile */
+            .contact-info { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LUMIÈRE - SITE EXEMPLO<span>.</span></div>
+                <div class="nav-links">
+                    <a href="#procedimentos">Procedimentos</a>
+                    <a href="#sobre">A Clínica</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                </div>
+                <a href="https://wa.me/seunumerosaqui" class="btn btn-primary cta-header">Agendar Visita</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sua beleza merece a <span class="text-gold">perfeição</span> da tecnologia e do cuidado.</h1>
+                <p>Descubra a melhor versão de si mesma com protocolos exclusivos e atendimento de alto padrão em dermatologia estética.</p>
+                <a href="https://wa.me/seunumerosaqui" class="btn btn-primary">Agendar Avaliação</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="authority-strip">
+            <div class="authority-grid">
+                <div class="authority-item">
+                    <i class="fas fa-user-md"></i>
+                    <p>Especialistas Certificados</p>
+                </div>
+                <div class="authority-item">
+                    <i class="fas fa-medal"></i>
+                    <p>Tecnologia FDA & Anvisa</p>
+                </div>
+                <div class="authority-item">
+                    <i class="fas fa-heart"></i>
+                    <p>+5.000 Sorrisos</p>
+                </div>
+                <div class="authority-item">
+                    <i class="fas fa-gem"></i>
+                    <p>Ambiente Premium</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="procedimentos" class="section-padding procedures">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Nossos Tratamentos</span>
+                <h2 class="section-title">A Arte da Estética</h2>
+            </div>
+
+            <div class="procedures-grid">
+                <article class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1080&auto=format&fit=crop" alt="Tratamentos Faciais">
+                    </div>
+                    <div class="card-content">
+                        <h3>Harmonização Facial</h3>
+                        <p>Realce seus traços com naturalidade. Preenchimentos estratégicos para equilíbrio e beleza.</p>
+                        <a href="#" class="btn btn-outline" style="width:100%">Saiba Mais</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img">
+                        <img src="https://i.pinimg.com/736x/57/11/54/5711540d8d9e22641a0d2711e8d9774b.jpg" alt="Toxina Botulínica">
+                    </div>
+                    <div class="card-content">
+                        <h3>Toxina Botulínica</h3>
+                        <p>Suavize marcas de expressão e previna o envelhecimento com a aplicação precisa de Botox®.</p>
+                        <a href="#" class="btn btn-outline" style="width:100%">Saiba Mais</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img">
+                        <img src="https://i.pinimg.com/736x/df/f5/07/dff507ce6b59514e8dcc67ab9b0c66af.jpg" alt="Laser e Tecnologias">
+                    </div>
+                    <div class="card-content">
+                        <h3>Laser & Tecnologias</h3>
+                        <p>Protocolos avançados para manchas, cicatrizes e rejuvenescimento profundo da pele.</p>
+                        <a href="#" class="btn btn-outline" style="width:100%">Saiba Mais</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="section-padding" style="background: white;">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://i.pinimg.com/1200x/79/e3/97/79e397513080f0f678df9a6394ba54c6.jpg">
+                </div>
+                <div class="about-content">
+                    <span class="section-subtitle">Sobre a Lumière</span>
+                    <h2 class="section-title">Excelência em cada detalhe</h2>
+                    <p style="margin-bottom: 20px; color: var(--text-gray);">
+                        Na Lumière, acreditamos que a estética vai além da aparência; é sobre autoestima e bem-estar. Nossa clínica foi projetada para ser um oásis de tranquilidade, onde a tecnologia de ponta encontra o cuidado humano.
+                    </p>
+                    <p style="margin-bottom: 30px; color: var(--text-gray);">
+                        Liderada pela Dra. [Nome], nossa equipe passa por atualizações internacionais constantes para trazer o que há de mais seguro e eficaz no mundo da estética para você.
+                    </p>
+                    <a href="#" class="btn btn-primary">Conheça Nossa Estrutura</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultados" class="section-padding before-after">
+        <div class="container text-center">
+            <span class="section-subtitle">Transformações Reais</span>
+            <h2 class="section-title">Resultados que Inspiram</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-gray);">
+                Imagens reais de pacientes autorizados. Cada organismo é único e os resultados podem variar.
+            </p>
+
+            <div class="comparison-wrapper">
+                <div class="comparison-card">
+                    <div class="comparison-images">
+                        <div class="comparison-img">
+                            <img src="sem_botox.jpg" alt="Antes">
+                            <span class="tag">Antes</span>
+                        </div>
+                        <div class="comparison-img">
+                            <img src="com_botox.jpg" alt="Depois">
+                            <span class="tag" style="background: var(--primary-gold); color: white;">Depois</span>
+                        </div>
+                    </div>
+                    <p class="result-desc">Protocolo de Bioestimulação de Colágeno</p>
+                </div>
+            </div>
+            
+            <br><br>
+            <a href="https://wa.me/seunumerosaqui" class="btn btn-primary">Quero um Resultado Assim</a>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="section-padding testimonials">
+        <div class="container">
+            <span class="section-subtitle">Love Stories</span>
+            <h2 class="section-title">O que nossas pacientes dizem</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"A melhor experiência que já tive. A clínica é linda, impecável e o resultado do meu procedimento ficou super natural, exatamente como eu queria."</p>
+                    <p class="client-name">- Mariana Costa</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Profissionais extremamente qualificadas. Me senti segura desde a primeira avaliação. O pós-operatório foi acompanhado de perto. Recomendo de olhos fechados."</p>
+                    <p class="client-name">- Fernanda Lima</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Fiz o protocolo de lasers e minha pele renovou. Ambiente sofisticado e atendimento pontual. Virei cliente fiel!"</p>
+                    <p class="client-name">- Patricia S.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-grid">
+        <div class="contact-info">
+            <h2 class="section-title" style="font-size: 2rem;">Agende sua visita</h2>
+            <p style="margin-bottom: 30px;">Estamos localizados no coração da cidade, em um espaço exclusivo com estacionamento privativo.</p>
+            
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Endereço</h4>
+                    <p>Av. Paulista Premium, 1000 - Jardins<br>São Paulo - SP</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Contato</h4>
+                    <p>(11) 99999-9999<br>contato@lumiere.com.br</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="far fa-clock"></i>
+                <div>
+                    <h4>Horário</h4>
+                    <p>Seg - Sex: 09:00 - 19:00<br>Sáb: 09:00 - 14:00</p>
+                </div>
+            </div>
+
+            <a href="https://wa.me/seunumerosaqui" class="btn btn-primary">Falar no WhatsApp</a>
+        </div>
+        
+        <div class="map-wrapper">
+             <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197587029562!2d-46.6565!3d-23.5615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzQxLjQiUyA0NsKwMzknMjMuNCJX!5e0!3m2!1spt-BR!2sbr!4v1625680000000!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">LUMIÈRE<span>.</span></div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">© 2024 Lumière Estética Avançada. Todos os direitos reservados. Responsável Técnico: Dra. Nome (CRM 00000).</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/seunumerosaqui" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
